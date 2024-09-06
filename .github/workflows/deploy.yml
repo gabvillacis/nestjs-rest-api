@@ -44,4 +44,11 @@ jobs:
         run: |
           docker stop nest-rest-api || true
           docker rm nest-rest-api || true
-          docker run --pull always -d -p 82:3000 --name nest-rest-api ${{ secrets.DOCKERHUB_USERNAME }}/nest-rest-api:latest
+          docker run --pull always -d -p 82:3000 --name nest-rest-api \
+          --env DB_HOST=${{ secrets.DB_HOST }} \
+          --env DB_PORT=${{ secrets.DB_PORT }} \
+          --env DB_USERNAME=${{ secrets.DB_USERNAME }} \
+          --env DB_PASSWORD=${{ secrets.DB_PASSWORD }} \
+          --env DB_NAME=${{ secrets.DB_NAME }} \
+          ${{ secrets.DOCKERHUB_USERNAME }}/nest-rest-api:latest
+
