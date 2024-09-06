@@ -40,6 +40,6 @@ jobs:
     steps: 
       - name: Deploy Docker container
         run: |
-          docker stop nest-rest-api
-          docker rm nest-rest-api
+          docker stop nest-rest-api || true
+          docker rm nest-rest-api || true
           docker run --pull always -d -p 82:3000 --name nest-rest-api ${{ secrets.DOCKERHUB_USERNAME }}/nest-rest-api:latest
