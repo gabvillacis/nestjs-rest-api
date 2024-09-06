@@ -39,7 +39,7 @@ jobs:
 
     steps: 
       - name: Deploy Docker container
-      run: |
-        docker stop nest-rest-api
-        docker rm nest-rest-api
-        docker run --pull always -d -p 82:3000 --name nest-rest-api ${{ secrets.DOCKERHUB_USERNAME }}/nest-rest-api:latest
+        run: |
+          docker stop nest-rest-api
+          docker rm nest-rest-api
+          docker run --pull always -d -p 82:3000 --name nest-rest-api ${{ secrets.DOCKERHUB_USERNAME }}/nest-rest-api:latest
